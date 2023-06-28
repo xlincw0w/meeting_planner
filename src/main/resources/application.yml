@@ -1,0 +1,17 @@
+server:
+  port: 4000
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  datasource:
+    url: jdbc:postgresql://lucky.db.elephantsql.com/gyxlkqrq
+    username: gyxlkqrq
+    password: FS8on86muSEZVoCSR-Z2IlsmGJYhyRzj
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

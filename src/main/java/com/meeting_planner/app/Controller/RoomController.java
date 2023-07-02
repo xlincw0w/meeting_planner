@@ -1,12 +1,12 @@
 package com.meeting_planner.app.Controller;
 
-import com.meeting_planner.app.Dto.Room.AssignEquipmentDto;
-import com.meeting_planner.app.Dto.Room.CreateRoomDto;
+import com.meeting_planner.app.Dto.Room.in.AssignEquipmentDto;
+import com.meeting_planner.app.Dto.Room.in.CreateRoomDto;
+import com.meeting_planner.app.Dto.Room.out.RoomDto;
 import com.meeting_planner.app.Model.Room;
 import com.meeting_planner.app.Service.RoomService;
 import com.meeting_planner.app.Templates.UseResponse;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -31,10 +31,10 @@ public class RoomController {
   private RoomService roomService;
 
   @GetMapping
-  public ResponseEntity<UseResponse<List<Room>>> fetchRooms(
+  public ResponseEntity<UseResponse<List<RoomDto>>> fetchRooms(
     @RequestParam Map<String, String> params
   ) {
-    UseResponse<List<Room>> response = new UseResponse<>();
+    UseResponse<List<RoomDto>> response = new UseResponse<>();
     response.setPayload(this.roomService.fetchRooms());
     return ResponseEntity.status(HttpStatus.OK).body(response);
   }
@@ -58,10 +58,10 @@ public class RoomController {
   }
 
   @PostMapping("/assign-equipment")
-  public ResponseEntity<UseResponse<Room>> assignEquipment(
+  public ResponseEntity<UseResponse<RoomDto>> assignEquipment(
     @RequestBody @Valid AssignEquipmentDto data
   ) {
-    UseResponse<Room> response = new UseResponse<>();
+    UseResponse<RoomDto> response = new UseResponse<>();
     response.setPayload(this.roomService.assignEquipment(data));
     return ResponseEntity.status(HttpStatus.CREATED).body(response);
   }

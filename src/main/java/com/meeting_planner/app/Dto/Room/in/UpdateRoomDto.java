@@ -1,4 +1,4 @@
-package com.meeting_planner.app.Dto.Room;
+package com.meeting_planner.app.Dto.Room.in;
 
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.PositiveOrZero;

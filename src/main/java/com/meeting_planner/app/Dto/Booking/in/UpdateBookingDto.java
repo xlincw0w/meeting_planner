@@ -1,4 +1,4 @@
-package com.meeting_planner.app.Dto.Booking;
+package com.meeting_planner.app.Dto.Booking.in;
 
 import com.meeting_planner.app.Enum.BookingTypeEnum;
 import jakarta.annotation.Nullable;
@@ -10,10 +10,10 @@ import lombok.Data;
 public class UpdateBookingDto {
 
   @Nullable
-  private LocalDateTime fromDate;
+  private LocalDateTime dateFrom;
 
   @Nullable
-  private LocalDateTime toDate;
+  private LocalDateTime dateTo;
 
   @Nullable
   @Positive

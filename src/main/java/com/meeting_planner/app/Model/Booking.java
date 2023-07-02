@@ -1,5 +1,6 @@
 package com.meeting_planner.app.Model;
 
+import com.meeting_planner.app.Enum.BookingTypeEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -37,6 +38,9 @@ public class Booking {
   @NotNull
   private int participants;
 
+  @NotNull
+  private BookingTypeEnum type;
+
   @ManyToOne
   @JoinColumn(name = "room_id")
   private Room room;
@@ -50,5 +54,5 @@ public class Booking {
       referencedColumnName = "id"
     )
   )
-  private Set<Equipment> equipments;
+  private List<Equipment> equipments;
 }

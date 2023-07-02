@@ -1,6 +1,7 @@
 package com.meeting_planner.app.Controller;
 
-import com.meeting_planner.app.Dto.Equipment.CreateEquipmentDto;
+import com.meeting_planner.app.Dto.Equipment.in.CreateEquipmentDto;
+import com.meeting_planner.app.Dto.Equipment.out.EquipmentSafeDto;
 import com.meeting_planner.app.Model.Equipment;
 import com.meeting_planner.app.Service.EquipmentService;
 import com.meeting_planner.app.Templates.UseResponse;
@@ -27,10 +28,10 @@ public class EquipmentController {
   private EquipmentService equipmentService;
 
   @GetMapping
-  public ResponseEntity<UseResponse<List<Equipment>>> fetchRooms(
+  public ResponseEntity<UseResponse<List<EquipmentSafeDto>>> fetchRooms(
     @RequestParam Map<String, String> params
   ) {
-    UseResponse<List<Equipment>> response = new UseResponse<>();
+    UseResponse<List<EquipmentSafeDto>> response = new UseResponse<>();
     response.setPayload(this.equipmentService.fetchRooms());
     return ResponseEntity.status(HttpStatus.OK).body(response);
   }

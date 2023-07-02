@@ -1,5 +1,6 @@
 package com.meeting_planner.app.Handler;
 
+import com.meeting_planner.app.Exception.BadRequestException;
 import com.meeting_planner.app.Templates.UseResponse;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -53,6 +54,22 @@ public class GlobalExceptionHandler {
   ) {
     UseResponse<String> response = new UseResponse<>();
     response.setError("BAD_REQUEST");
+    response.setMessage(ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+  }
+
+  @ExceptionHandler(BadRequestException.class)
+  public ResponseEntity<Object> handleException(BadRequestException ex) {
+    UseResponse<String> response = new UseResponse<>();
+    response.setError("BAD_REQUEST");
+    response.setMessage(ex.getMessage());
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+  }
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<Object> handleException(Exception ex) {
+    UseResponse<String> response = new UseResponse<>();
+    response.setError("ERROR");
     response.setMessage(ex.getMessage());
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
   }
